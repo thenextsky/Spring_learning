@@ -43,4 +43,18 @@ public class Test1 {
 		((AbstractApplicationContext)ctx).close();
 	}
 
+	//bean的注入
+	@Test
+	public void test4(){
+		PersonService ps = (PersonService) ctx.getBean("personService1");
+		ps.save();
+	}
+	
+	//普通属性的注入
+	@Test
+	public void test5(){
+		Person p = (Person) ctx.getBean("person");
+		System.out.println(p.getUsername()+";"+p.getAge());
+	}
+	
 }

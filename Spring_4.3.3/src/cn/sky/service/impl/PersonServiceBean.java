@@ -1,9 +1,29 @@
 package cn.sky.service.impl;
 
+import cn.sky.dao.PersonDao;
 import cn.sky.service.PersonService;
 
 public class PersonServiceBean implements PersonService {
 	
+	private PersonDao personDao;
+	private PersonDao personDao2;
+	
+	public PersonDao getPersonDao2() {
+		return personDao2;
+	}
+
+	public void setPersonDao2(PersonDao personDao2) {
+		this.personDao2 = personDao2;
+	}
+
+	public PersonDao getPersonDao() {
+		return personDao;
+	}
+
+	public void setPersonDao(PersonDao personDao) {
+		this.personDao = personDao;
+	}
+
 	public void init(){
 		System.out.println("打开资源");
 	}
@@ -18,7 +38,8 @@ public class PersonServiceBean implements PersonService {
 	
 	@Override
 	public void save(){
-		System.out.println("PersonServiceBean 的save()方法");
+		personDao.add();
+		personDao2.add();
 	}
 
 }
