@@ -41,6 +41,34 @@
 	<bean id="person" class="cn.sky.domain.Person">
 		<property name="username" value="贵子1"></property>
 		<property name="age" value="11"></property>
+		<property name="set">
+			<set>
+				<value>set--1</value>
+				<value>set--2</value>
+				<value>set--3</value>
+			</set>
+		</property>
+		<property name="list">
+			<list>
+				<value>list--1</value>
+				<value>list--2</value>
+				<value>list--3</value>
+			</list>
+		</property>
+		<property name="props">
+			<props>
+				<prop key="key1">value1</prop>
+				<prop key="key2">value2</prop>
+				<prop key="key3">value3</prop>
+			</props>
+		</property>
+		<property name="map">
+			<map>
+				<entry key="key-1" value="value-1"></entry>
+				<entry key="key-2" value="value-2"></entry>
+				<entry key="key-3" value="value-3"></entry>
+			</map>
+		</property>
 	</bean>
 	
 	

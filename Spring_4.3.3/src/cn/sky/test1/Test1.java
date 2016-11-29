@@ -57,4 +57,13 @@ public class Test1 {
 		System.out.println(p.getUsername()+";"+p.getAge());
 	}
 	
+	//set、list、propeities、map的注入
+	@Test
+	public void test6() {
+		Person p = (Person) ctx.getBean("person");
+		System.out.println(p.getSet());
+		System.out.println(p.getList());
+		System.out.println(p.getProps());
+		System.out.println(p.getMap());
+	}
 }
