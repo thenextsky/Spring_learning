@@ -11,9 +11,10 @@ public class Test1 {
 	@Test
 	public void test1() {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml");
-		PersonService ps = (PersonService) ctx.getBean("personService");
+//		PersonService ps = (PersonService) ctx.getBean("personService1");
+//		PersonService ps = (PersonService) ctx.getBean("personService2");
+		PersonService ps = (PersonService) ctx.getBean("personService3");
 		ps.save();
-
 	}
 
 }

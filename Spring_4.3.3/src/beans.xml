@@ -3,8 +3,12 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
-	
-	<bean id="personService" class="cn.sky.service.impl.PersonServiceBean"/>
-	
-	
+	<!-- 使用Bean的构造方法实例化Bean -->
+	<bean id="personService1" class="cn.sky.service.impl.PersonServiceBean"/>
+	<!-- 使用静态工厂方法实例化Bean -->
+	<bean id="personService2" class="cn.sky.service.impl.PersonServiceBeanFactory" 
+		factory-method="createPersonServiceBean"/>
+	<!-- 使用实例工厂方法实例化Bean -->
+	<bean id="personServiceBeanFactory" class="cn.sky.service.impl.PersonServiceBeanFactory"/>
+	<bean id="personService3" factory-bean="personServiceBeanFactory" factory-method="createPersonServiceBean2"/>
 </beans>
