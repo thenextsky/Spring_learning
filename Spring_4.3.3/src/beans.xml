@@ -4,11 +4,14 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd"
         default-lazy-init="default">
-	<!-- 默认，容器启动时初始化bean，也可以在bean节点的lazy-init="true"延迟初始化bean，此时只有第一次获取bean才会初始化bena
+	<!--
+		如果没有设置lazy-init，即default，则：如果scope=singleton-》容器启动时初始化bean；如果scope=prototype-》getBean时才初始化bean 
+		默认，容器启动时初始化bean，也可以在bean节点的lazy-init="true"延迟初始化bean，此时只有第一次获取bean才会初始化bena
 		如果想对所有bean都延迟初始化，可以在根节点beans设置default-lazy-init="true"。 
 	-->
 	<!-- 使用Bean的构造方法实例化Bean -->
-	<bean id="personService1" class="cn.sky.service.impl.PersonServiceBean" lazy-init="default"></bean>
+	<bean id="personService1" class="cn.sky.service.impl.PersonServiceBean"
+		 lazy-init="false" init-method="init" destroy-method="destroy"/>
 	<!-- 使用静态工厂方法实例化Bean -->
 	<bean id="personService2" class="cn.sky.service.impl.PersonServiceBeanFactory" 
 		factory-method="createPersonServiceBean"/>
@@ -17,7 +20,7 @@
 	<bean id="personService3" factory-bean="personServiceBeanFactory" factory-method="createPersonServiceBean2"/>
 	
 	<!-- bean的作用域:singleton,prototype,request,session, global session-->
-<!-- 	<bean id="person" class="cn.sky.domain.Person" scope="singleton"/> -->
+	<!-- 	<bean id="person" class="cn.sky.domain.Person" scope="singleton"/> -->
 	<bean id="person" class="cn.sky.domain.Person" scope="prototype"/>
 	
 	

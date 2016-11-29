@@ -3,13 +3,16 @@ package cn.sky.test1;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import cn.sky.domain.Person;
 import cn.sky.service.PersonService;
+import cn.sky.service.impl.PersonServiceBean;
 
 public class Test1 {
 	ApplicationContext ctx;
+	
 	@Before
 	public void test0(){
 		ctx = new ClassPathXmlApplicationContext("beans.xml");
@@ -30,6 +33,14 @@ public class Test1 {
 		Person p1 = (Person) ctx.getBean("person");
 		Person p2 = (Person) ctx.getBean("person");
 		System.out.println(p1==p2);
+	}
+	
+	//Bean的生命周期
+	@Test
+	public void test3(){
+		PersonService psb = (PersonServiceBean) ctx.getBean("personService1");
+		psb.save();
+		((AbstractApplicationContext)ctx).close();
 	}
 
 }
