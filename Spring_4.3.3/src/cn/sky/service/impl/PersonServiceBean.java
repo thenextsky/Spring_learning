@@ -5,7 +5,7 @@ import cn.sky.service.PersonService;
 public class PersonServiceBean implements PersonService {
 	
 	public PersonServiceBean() {
-		System.out.println("PersonServiceBean 的构造方法");
+//		System.out.println("PersonServiceBean 的构造方法");
 	}
 	
 	@Override
