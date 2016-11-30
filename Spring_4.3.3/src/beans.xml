@@ -36,9 +36,13 @@
 			<!-- 内部bean方式注入 -->
 			<bean class="cn.sky.dao.impl.PersonDaoBean"/>
 		</property>
+		<constructor-arg index="0" type="cn.sky.dao.PersonDao" ref="personDao"></constructor-arg>
+		<constructor-arg index="1" type="java.lang.String" value="呵呵"></constructor-arg>
 	</bean>
 	
 	<bean id="person" class="cn.sky.domain.Person">
+		<constructor-arg index="0" type="java.lang.String" value="呵呵哒"></constructor-arg>
+		<!-- 先运行构造方法，设置了呵呵哒，再运行setter方法，设置成贵子1 -->
 		<property name="username" value="贵子1"></property>
 		<property name="age" value="11"></property>
 		<property name="set">

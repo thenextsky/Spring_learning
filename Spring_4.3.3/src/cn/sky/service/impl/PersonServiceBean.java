@@ -7,6 +7,20 @@ public class PersonServiceBean implements PersonService {
 	
 	private PersonDao personDao;
 	private PersonDao personDao2;
+	private String name;
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public PersonServiceBean(PersonDao personDao,String name){
+		this.personDao = personDao;
+		this.name = name;
+	}
 	
 	public PersonDao getPersonDao2() {
 		return personDao2;

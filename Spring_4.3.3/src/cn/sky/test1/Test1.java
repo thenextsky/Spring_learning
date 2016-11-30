@@ -66,4 +66,12 @@ public class Test1 {
 		System.out.println(p.getProps());
 		System.out.println(p.getMap());
 	}
+	
+	//通过构造方法装配属性
+	@Test
+	public void test7() {
+		PersonServiceBean ps = (PersonServiceBean) ctx.getBean("personService1");
+		System.out.println(ps.getPersonDao());
+		System.out.println(ps.getName());
+	}
 }

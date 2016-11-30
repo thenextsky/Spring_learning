@@ -10,6 +10,10 @@ public class Person {
 	private String username;
 	private int age;
 	
+	public Person(String username){
+		this.username = username;
+	}
+	
 	private Set<String> set;
 	private List<String> list;
 	private Properties props;
