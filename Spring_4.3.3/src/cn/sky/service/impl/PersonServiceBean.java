@@ -1,10 +1,14 @@
 package cn.sky.service.impl;
 
+import javax.annotation.Resource;
+
 import cn.sky.dao.PersonDao;
 import cn.sky.service.PersonService;
 
 public class PersonServiceBean implements PersonService {
-	
+	//Resource可以标注在字段或者属性的setter方法上，若无指定name，则name=字段名||属性名
+	//Resource按名称装配，如果找不到，则按类型装配；但是，如果指定了name:@Resource(name="personDao")则只能按名称装配，不会按类型了。
+//	@Resource
 	private PersonDao personDao;
 	private PersonDao personDao2;
 	private String name;
@@ -29,11 +33,11 @@ public class PersonServiceBean implements PersonService {
 	public void setPersonDao2(PersonDao personDao2) {
 		this.personDao2 = personDao2;
 	}
-
 	public PersonDao getPersonDao() {
 		return personDao;
 	}
-
+	//标注在属性personDao的setter方法上，则使用属性名：personDao查找并注入
+	@Resource
 	public void setPersonDao(PersonDao personDao) {
 		this.personDao = personDao;
 	}
@@ -53,7 +57,6 @@ public class PersonServiceBean implements PersonService {
 	@Override
 	public void save(){
 		personDao.add();
-		personDao2.add();
 	}
 
 }
