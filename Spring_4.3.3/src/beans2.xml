@@ -5,7 +5,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context 
-        http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+        http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 <!-- 如果想在Java代码使用@Autowired或@Resource注解方式进行装配，则需要在xml中配置：
 	<context:annotation-config/>
 	同时引入名称空间：xmlns:context="http://www.springframework.org/schema/context"
@@ -24,7 +24,15 @@
 		<property name="id" value="2"></property>
 	</bean>
 	
-	<bean id="personService" class="cn.sky.service.impl.PersonServiceBean">
+	<!--
+	autowire:
+		byType:类型，如果出现多个，则抛异常；
+		byName:名字；
+		constructor:构造器，与byType类似，不同之处是用于构造方法的参数，如果没有，则抛异常；
+		no:无；
+		default:no；
+	-->
+	<bean id="personService" class="cn.sky.service.impl.PersonServiceBean" autowire="byName">
 		<!-- <property name="personDao" ref="personDao"></property> -->
 	</bean>
 	

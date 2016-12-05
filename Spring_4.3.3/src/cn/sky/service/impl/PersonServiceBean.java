@@ -1,8 +1,5 @@
 package cn.sky.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-
 import cn.sky.dao.PersonDao;
 import cn.sky.service.PersonService;
 
@@ -14,8 +11,8 @@ public class PersonServiceBean implements PersonService {
 	//Autowired：按类型装配。如果有多个bean类型一样，取第一个。
 	//默认为：@Autowired(required=true)，表示必须要注入，若查找不到bean，则抛异常；=false，找不到则设置为null。
 	//可以加入@Qualifier("personDao")，则按名称装配，找不到则抛异常
-	@Autowired(required=true)
-	@Qualifier("personDao")
+//	@Autowired(required=true)
+//	@Qualifier("personDao")
 	private PersonDao personDao;
 	private PersonDao personDao2;
 	private String name;
