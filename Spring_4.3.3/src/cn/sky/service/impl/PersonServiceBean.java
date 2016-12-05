@@ -1,8 +1,16 @@
 package cn.sky.service.impl;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Service;
+
 import cn.sky.dao.PersonDao;
 import cn.sky.service.PersonService;
 
+@Service
+@Scope("singleton")//默认bean的作用域是singleton
 public class PersonServiceBean implements PersonService {
 	//Resource可以标注在字段或者属性的setter方法上，若无指定name，则name=字段名||属性名
 	//Resource按名称装配，如果找不到，则按类型装配；但是，如果指定了name:@Resource(name="personDao")则只能按名称装配，不会按类型了。
@@ -46,10 +54,11 @@ public class PersonServiceBean implements PersonService {
 		this.personDao = personDao;
 	}
 
+	@PostConstruct
 	public void init(){
 		System.out.println("打开资源");
 	}
-	
+	@PreDestroy//当Scope为singleton&&ctx.close()才会调用destroy()
 	public void destroy(){
 		System.out.println("释放资源");
 	}
