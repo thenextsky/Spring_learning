@@ -9,12 +9,20 @@
 <!-- 如果想在Java代码使用@Autowired或@Resource注解方式进行装配，则需要在xml中配置：
 	<context:annotation-config/>
 	同时引入名称空间：xmlns:context="http://www.springframework.org/schema/context"
-	和context的schema文件：http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+	和context的schema文件：http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 	导包：spring-aop-4.3.3.RELEASE.jar
  -->        
     <context:annotation-config/>
-    
-	<bean id="personDao" class="cn.sky.dao.impl.PersonDaoBean"/>
+    <!--
+    依赖注入：1.使用构造器注入；2.使用属性setter方法注入；3.使用Field注入（用于注解方式）。
+ 手工装配（构造器，setter，Field）&&自动装配
+     -->
+	<bean id="personDao" class="cn.sky.dao.impl.PersonDaoBean">
+		<property name="id" value="1"></property>
+	</bean>
+	<bean id="personDao2" class="cn.sky.dao.impl.PersonDaoBean">
+		<property name="id" value="2"></property>
+	</bean>
 	
 	<bean id="personService" class="cn.sky.service.impl.PersonServiceBean">
 		<!-- <property name="personDao" ref="personDao"></property> -->

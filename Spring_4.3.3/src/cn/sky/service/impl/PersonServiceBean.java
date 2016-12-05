@@ -1,6 +1,7 @@
 package cn.sky.service.impl;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import cn.sky.dao.PersonDao;
 import cn.sky.service.PersonService;
@@ -9,6 +10,12 @@ public class PersonServiceBean implements PersonService {
 	//Resource可以标注在字段或者属性的setter方法上，若无指定name，则name=字段名||属性名
 	//Resource按名称装配，如果找不到，则按类型装配；但是，如果指定了name:@Resource(name="personDao")则只能按名称装配，不会按类型了。
 //	@Resource
+	
+	//Autowired：按类型装配。如果有多个bean类型一样，取第一个。
+	//默认为：@Autowired(required=true)，表示必须要注入，若查找不到bean，则抛异常；=false，找不到则设置为null。
+	//可以加入@Qualifier("personDao")，则按名称装配，找不到则抛异常
+	@Autowired(required=true)
+	@Qualifier("personDao")
 	private PersonDao personDao;
 	private PersonDao personDao2;
 	private String name;
@@ -37,7 +44,7 @@ public class PersonServiceBean implements PersonService {
 		return personDao;
 	}
 	//标注在属性personDao的setter方法上，则使用属性名：personDao查找并注入
-	@Resource
+//	@Resource
 	public void setPersonDao(PersonDao personDao) {
 		this.personDao = personDao;
 	}
